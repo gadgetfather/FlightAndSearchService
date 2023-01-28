@@ -1,4 +1,4 @@
-const { CityService, CityService } = require('../services/index')
+const { CityService } = require('../services/index')
 const CityMaker = new CityService()
 const create = async (req, res) => {
     try {
@@ -56,4 +56,11 @@ const update = async (req, res) => {
             err: error
         })
     }
+}
+
+module.exports = {
+    create,
+    destroy,
+    get,
+    update,
 }
