@@ -29,10 +29,11 @@ class CityRepository {
 
     async getCity(cityId) {
         try {
-            const city = await City.findByPk(cityId)
-            return city
+            const city = await City.findOne({ where: {id: cityId } });
+            return city;
         } catch (error) {
-            throw { error }
+            console.log("Something went wrong in the repository layer get");
+            throw {error};
         }
     }
 }
