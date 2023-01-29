@@ -51,7 +51,7 @@ const get = async (req, res) => {
 
 const getAll = async(req,res)=>{
     try {
-        const response = await CityMaker.getAllCity();
+        const response = await CityMaker.getAllCity(req.query);
         return res.status(200).json({
             data: response,
             success: true,
