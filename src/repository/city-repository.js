@@ -20,7 +20,11 @@ class CityRepository {
     }
     async updateCity(cityId, data) {
         try {
-            const city = await City.update(data, { where: { id: cityId } })
+            // This approach also works but it does not returns updated object
+            // const city = await City.update(data, { where: { id: cityId } })
+            const city = await City.findByPk(cityId)
+            city.name = data.name
+            await city.save()
             return city
         } catch (error) {
             throw { error }
