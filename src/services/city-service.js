@@ -14,6 +14,17 @@ class CityService {
             throw {error}
         }
     }
+    async createManyCity(data){
+        console.log('DATA',data)
+
+        try {
+            const city = await this.cityRepository.createManyCity(data)
+            return city
+        } catch (error) {
+            console.log('something went wrong in service layer')
+            throw {error}
+        }
+    }
     async deleteCity(cityId){
         try {
             const response = await this.cityRepository.deleteCity(cityId)

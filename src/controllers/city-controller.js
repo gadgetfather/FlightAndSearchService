@@ -14,6 +14,21 @@ const create = async (req, res) => {
         })
     }
 }
+const createMany = async (req, res) => {
+    console.log('REQ',req.body)
+    try {
+        const city = await CityMaker.createManyCity(req.body)
+        return res.status(201).json({ data: city, success: true, message: 'Created Cities', err: {} })
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({
+            data: {},
+            success: false,
+            message: 'Not able to create city',
+            err: error
+        })
+    }
+}
 const destroy = async (req, res) => {
     try {
         const city = await CityMaker.deleteCity(req.params.id)
@@ -86,6 +101,7 @@ const update = async (req, res) => {
 
 module.exports = {
     create,
+    createMany,
     destroy,
     get,
     getAll,
